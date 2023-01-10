@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreProjectRequest;
+use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 
 class ProjectController extends Controller
@@ -15,8 +16,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
-        return view("index", compact("projects"));
+        $projects = Project::orderByDesc('id')->get();
+        //dd($projects);
+        return view("admin.projects.index", compact("projects"));
     }
 
     /**
@@ -26,7 +28,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.projects.create');
     }
 
     /**
@@ -35,9 +37,12 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProjectRequest $request)
     {
-        //
+        $val_data = $request->validated();
+        $project = Project::create($val_data);
+
+        return to_route('admin.projects.index')->with('message', "$project->title added successfully");
     }
 
     /**
@@ -46,9 +51,9 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Project $project)
     {
-        //
+        return view('admin.projects.show', compact('project'));
     }
 
     /**
@@ -69,9 +74,12 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        $val_data = $request->validated();
+        $project->update($val_data);
+
+        return to_route('admin.projects.index')->with('message', "$project->title update successfully");
     }
 
     /**
@@ -80,8 +88,10 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Project $project)
     {
-        //
+        $project->delete();
+
+        return to_route('admin.projects.index')->with('message', "$project->title deleted successfully");
     }
 }
