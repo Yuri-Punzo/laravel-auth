@@ -29,4 +29,14 @@ class StoreProjectRequest extends FormRequest
             'description' => 'nullable'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'Il titolo é obbligatorio',
+            'title.min' => 'Il titolo deve essere almeno :min caratteri',
+            'title.max' => 'Il titolo deve essere almeno :max caratteri',
+            'slug.max' => "Lo slug puó essere massimo :max caratteri",
+        ];
+    }
 }

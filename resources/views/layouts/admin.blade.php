@@ -25,7 +25,7 @@
 
         @yield('content')
 
-        <a href="{{route('admin.projects.index')}}">Projects</a>
+        <a class="ms-5" href="{{route('admin.projects.index')}}">Projects</a>
 
 
     </div>

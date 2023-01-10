@@ -4,7 +4,7 @@
 
 <div class="container mb-5">
     <h1 class="py-5">Create a new Project</h1>
-    <!-- include('partials.errors') -->
+    @include('partials.errors')
     <form action="{{route('admin.projects.store')}}" method="post" class="card p-3">
         @csrf
         <div class="mb-3">
