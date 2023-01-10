@@ -93,7 +93,7 @@
                     <div class="heading d-flex justify-content-between">
                         <h2>Admin Panel - Projects</h2>
                         <div>
-                            <a href="#" class="btn btn-primary">Add Comic</a>
+                            <a href="#" class="btn btn-primary">Add Project</a>
                         </div>
                     </div>
 
@@ -110,6 +110,7 @@
                                     <th>Id</th>
                                     <th>Title</th>
                                     <th>Slug</th>
+                                    <th>Description</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -119,6 +120,7 @@
                                     <td scope="row">project id</td>
                                     <td>project title</td>
                                     <td>project slug</td>
+                                    <td>project description</td>
                                     <td class="flex-column">
                                         <a href="#" class="btn btn-primary view m-1">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
