@@ -14,11 +14,6 @@
             <small id="titleHlper" class="text-muted">Add the product title here</small>
         </div>
         <div class="mb-3">
-            <label for="slug" class="form-label @error('slug') is-invalid @enderror">Slug</label>
-            <input type="text" name="slug" id="slug" class="form-control" placeholder="" aria-describedby="slugHlper" value="{{old('slug', $project->slug)}}">
-            <small id="thumbHlper" class="text-muted">Add the product slug here</small>
-        </div>
-        <div class="mb-3">
             <label for="description" class="form-label">Description</label>
             <textarea class="form-control" name="description" id="description" rows="4">{{old('description', $project->description)}}</textarea>
         </div>
